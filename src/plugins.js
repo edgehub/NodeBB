@@ -18,7 +18,7 @@ var	fs = require('fs'),
 					RDB.smembers('plugins:active', next);
 				},
 				function(plugins, next) {
-					async.each(plugins, function(plugin) {
+					async.each(plugins||[], function(plugin) {
 						// TODO: Update this check to also check node_modules
 						var	pluginPath = path.join(__dirname, '../plugins/', plugin);
 						fs.exists(pluginPath, function(exists) {
